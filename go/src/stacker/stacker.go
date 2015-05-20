@@ -10,7 +10,7 @@ func main() {
 	haystack.Push("hay")
 	haystack.Push(-15)
 	haystack.Push([]string{"pin", "clip", "needle"})
-	haystack.Push(81, 52)
+	haystack.Push(81.52)
 	for {
 		item, err := haystack.Pop()
 		if err != nil {
