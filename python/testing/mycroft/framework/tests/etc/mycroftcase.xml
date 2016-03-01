@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mycroftcase>
+    <machine id="test_create_vm1_for_mycroft_own">
+        <ip>172.16.13.31</ip>
+        <gateway>172.16.13.1</gateway>
+        <project>bpc3</project>
+        <desc>unit test for mycroft</desc>
+        <dockerflyd>http://172.16.11.13:5123/v1/</dockerflyd>
+        <autodelete>true</autodelete>
+
+        <actionGroup>
+            <setUp>
+                <command type="Execute">
+                    <cmd>/usr/local/bin/bpctt setup</cmd>
+                </command>
+                <command type="MongoImport">
+                    <fixture>
+                        <path>fixtures/importdb</path>
+                    </fixture>
+                </command>
+                <command type="MongoDiff">
+                    <fixture>
+                        <path>fixtures/diffdb</path>
+                    </fixture>
+                </command>
+                <command type="ZMQSend">
+                    <fixture>
+                        <path>fixtures/btr/app1/cap1</path>
+                    </fixture>
+                    <endpoint>tcp://172.16.13.31:23200</endpoint>
+                    <instance_id>0</instance_id>
+                    <workcount>4</workcount>
+                </command>
+            </setUp>
+            <tearDown>
+                <command type="MongoClean">
+                    <fixture>
+                        <path>fixtures/importdb</path>
+                    </fixture>
+                </command>
+            </tearDown>
+        </actionGroup>
+    </machine>
+
+</mycroftcase>

@@ -1,0 +1,266 @@
+<?xml version="1.0" encoding="utf-8"?>
+<result>
+    <record>
+        <status>持续中</status>
+    
+        <ts_end>2015-08-31 10:42:00</ts_end>
+    
+        <value>89.35%</value>
+    
+        <source>SPV=普通协议 : 组件=应用组件2</source>
+    
+        <peak>90.87%</peak>
+    
+        <duration>3分钟</duration>
+    
+        <ts_start>2015-08-31 10:40:00</ts_start>
+    
+        <type>阈值告警</type>
+    
+        <event>成功率高于阈值</event>
+    
+        <condition>0.00%</condition>
+    </record>
+
+    <record>
+        <status>持续中</status>
+    
+        <ts_end>2015-08-31 10:42:00</ts_end>
+    
+        <value>100.00%</value>
+    
+        <source>SPV=普通协议 : 组件=应用组件2</source>
+    
+        <peak>100.00%</peak>
+    
+        <duration>3分钟</duration>
+    
+        <ts_start>2015-08-31 10:40:00</ts_start>
+    
+        <type>阈值告警</type>
+    
+        <event>响应率高于阈值</event>
+    
+        <condition>0.00%</condition>
+    </record>
+
+    <record>
+        <status>持续中</status>
+    
+        <ts_end>2015-08-31 10:43:00</ts_end>
+    
+        <value>90.04%</value>
+    
+        <source>SPV=普通协议 : 组件=应用组件2</source>
+    
+        <peak>90.87%</peak>
+    
+        <duration>4分钟</duration>
+    
+        <ts_start>2015-08-31 10:40:00</ts_start>
+    
+        <type>阈值告警</type>
+    
+        <event>成功率高于阈值</event>
+    
+        <condition>0.00%</condition>
+    </record>
+
+    <record>
+        <status>持续中</status>
+    
+        <ts_end>2015-08-31 10:43:00</ts_end>
+    
+        <value>100.00%</value>
+    
+        <source>SPV=普通协议 : 组件=应用组件2</source>
+    
+        <peak>100.00%</peak>
+    
+        <duration>4分钟</duration>
+    
+        <ts_start>2015-08-31 10:40:00</ts_start>
+    
+        <type>阈值告警</type>
+    
+        <event>响应率高于阈值</event>
+    
+        <condition>0.00%</condition>
+    </record>
+
+    <record>
+        <status>持续中</status>
+    
+        <ts_end>2015-08-31 10:42:00</ts_end>
+    
+        <value>779.309ms</value>
+    
+        <source>SPV=普通协议 : 组件=应用组件1</source>
+    
+        <peak>779.766ms</peak>
+    
+        <duration>3分钟</duration>
+    
+        <ts_start>2015-08-31 10:40:00</ts_start>
+    
+        <type>阈值告警</type>
+    
+        <event>响应时间高于阈值</event>
+    
+        <condition>0.000ms</condition>
+    </record>
+
+    <record>
+        <status>持续中</status>
+    
+        <ts_end>2015-08-31 10:42:00</ts_end>
+    
+        <value>533</value>
+    
+        <source>SPV=普通协议 : 组件=应用组件1</source>
+    
+        <peak>544</peak>
+    
+        <duration>3分钟</duration>
+    
+        <ts_start>2015-08-31 10:40:00</ts_start>
+    
+        <type>阈值告警</type>
+    
+        <event>交易量高于阈值</event>
+    
+        <condition>400</condition>
+    </record>
+
+    <record>
+        <status>持续中</status>
+    
+        <ts_end>2015-08-31 10:44:00</ts_end>
+    
+        <value>90.62%</value>
+    
+        <source>SPV=普通协议 : 组件=应用组件2</source>
+    
+        <peak>90.87%</peak>
+    
+        <duration>5分钟</duration>
+    
+        <ts_start>2015-08-31 10:40:00</ts_start>
+    
+        <type>阈值告警</type>
+    
+        <event>成功率高于阈值</event>
+    
+        <condition>0.00%</condition>
+    </record>
+
+    <record>
+        <status>持续中</status>
+    
+        <ts_end>2015-08-31 10:44:00</ts_end>
+    
+        <value>100.00%</value>
+    
+        <source>SPV=普通协议 : 组件=应用组件2</source>
+    
+        <peak>100.00%</peak>
+    
+        <duration>5分钟</duration>
+    
+        <ts_start>2015-08-31 10:40:00</ts_start>
+    
+        <type>阈值告警</type>
+    
+        <event>响应率高于阈值</event>
+    
+        <condition>0.00%</condition>
+    </record>
+
+    <record>
+        <status>持续中</status>
+    
+        <ts_end>2015-08-31 10:43:00</ts_end>
+    
+        <value>764.904ms</value>
+    
+        <source>SPV=普通协议 : 组件=应用组件1</source>
+    
+        <peak>779.766ms</peak>
+    
+        <duration>4分钟</duration>
+    
+        <ts_start>2015-08-31 10:40:00</ts_start>
+    
+        <type>阈值告警</type>
+    
+        <event>响应时间高于阈值</event>
+    
+        <condition>0.000ms</condition>
+    </record>
+
+    <record>
+        <status>持续中</status>
+    
+        <ts_end>2015-08-31 10:43:00</ts_end>
+    
+        <value>532</value>
+    
+        <source>SPV=普通协议 : 组件=应用组件1</source>
+    
+        <peak>544</peak>
+    
+        <duration>4分钟</duration>
+    
+        <ts_start>2015-08-31 10:40:00</ts_start>
+    
+        <type>阈值告警</type>
+    
+        <event>交易量高于阈值</event>
+    
+        <condition>400</condition>
+    </record>
+
+    <record>
+        <status>持续中</status>
+    
+        <ts_end>2015-08-31 10:44:00</ts_end>
+    
+        <value>763.949ms</value>
+    
+        <source>SPV=普通协议 : 组件=应用组件1</source>
+    
+        <peak>779.766ms</peak>
+    
+        <duration>5分钟</duration>
+    
+        <ts_start>2015-08-31 10:40:00</ts_start>
+    
+        <type>阈值告警</type>
+    
+        <event>响应时间高于阈值</event>
+    
+        <condition>0.000ms</condition>
+    </record>
+
+    <record>
+        <status>持续中</status>
+    
+        <ts_end>2015-08-31 10:44:00</ts_end>
+    
+        <value>549</value>
+    
+        <source>SPV=普通协议 : 组件=应用组件1</source>
+    
+        <peak>549</peak>
+    
+        <duration>5分钟</duration>
+    
+        <ts_start>2015-08-31 10:40:00</ts_start>
+    
+        <type>阈值告警</type>
+    
+        <event>交易量高于阈值</event>
+    
+        <condition>400</condition>
+    </record>
+</result>

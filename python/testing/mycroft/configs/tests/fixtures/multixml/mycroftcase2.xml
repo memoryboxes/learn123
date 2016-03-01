@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mycroftcase>
+    <machine id="mycroft_machine_for_bpc3ui_2">
+        <ip>172.16.13.31</ip>
+        <gateway>172.16.13.1</gateway>
+        <project>bpc3ui</project>
+        <desc>test for bpc3ui</desc>
+        <dockerflyd>http://172.16.11.13:5123/v1/</dockerflyd>
+        <autodelete>true</autodelete>
+
+        <actionGroup>
+            <setUp>
+                <command type="MongoImport">
+                    <fixture>
+                        <path>importdb</path>
+                    </fixture>
+                </command>
+                <command type="MongoDiff">
+                    <fixture>
+                        <path>diffdb</path>
+                    </fixture>
+                </command>
+                <command type="ZMQSend">
+                    <fixture>
+                        <path>btr</path>
+                    </fixture>
+                    <endpoint>tcp://127.0.0.1:23000</endpoint>
+                    <instance_id>0</instance_id>
+                </command>
+                <command type="FilePut">
+                    <fixture>
+                        <path>putfile</path>
+                    </fixture>
+                    <remote_path>/test</remote_path>
+                </command>
+                <command type="FileGet">
+                    <fixture>
+                        <path>getfile</path>
+                    </fixture>
+                    <remote_path>/test</remote_path>
+                </command>
+            </setUp>
+            <tearDown>
+                <command type="MongoClean">
+                    <fixture>
+                        <path>importdb</path>
+                    </fixture>
+                </command>
+            </tearDown>
+        </actionGroup>
+    </machine>
+
+</mycroftcase>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mycroftcase>
+    <machine id='mycroft_machine_for_bpc3ui_1'>
+        <ip>172.16.13.31</ip>
+        <gateway>172.16.13.1</gateway>
+        <project>bpc3ui</project>
+        <desc>test for bpc3ui</desc>
+        <dockerflyd>http://172.16.11.13:5123/v1/</dockerflyd>
+        <autodelete>true</autodelete>
+    </machine>
+
+</mycroftcase>
