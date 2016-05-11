@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 #  -*- coding: utf-8 -*-
 
-class Fibs: # from   www. jav a2  s  . c o  m
+class Fibs(object):
     def __init__(self):
         self.a = 0
         self.b = 1
