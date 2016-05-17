@@ -1,0 +1,20 @@
+#CFLAGS+=-g -DDEBUG
+CFLAGS+=-I/usr/local/include
+CFLAGS+=-Wall
+CFLAGS+=-O2
+LDFLAGS+=-L/usr/local/lib -lpcap -lrt
+
+SRC=$(wildcard *.c)
+
+default: target
+
+CLEANFILES	= target *.o
+
+msgminer: $(SRC)
+	$(CC) -o $@ $^ $(CFLAGS) $(LIBS) $(LDFLAGS)
+
+.o: .c
+	$(CC) $(CFLAGS) -c $< -o $@
+
+clean:
+	-@rm -rf $(CLEANFILES)
