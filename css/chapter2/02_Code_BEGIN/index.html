@@ -38,14 +38,14 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                   </button>
-                  <a class="navbar-brand" href="index.html">Bootstrappin'</a>
+                  <a class="navbar-brand" href="index.html"><img src="img/logo.png" alt="Bootstrappin' " width=120></a>
                 </div>
                 <div class="navbar-collapse collapse">
                   <ul class="nav navbar-nav">
-                    <li class="active"><a href="index.html">Home</a></li>
-                    <li><a href="#">Portfolio</a></li>
-                    <li><a href="#">Team</a></li>
-                    <li><a href="#">Contact</a></li>
+                    <li class="active"><a href="index.html"><span class="icon fa fa-group"></span> Home</a></li>
+                    <li><a href="#"><span class="icon fa fa-desktop"></span> Portfolio</a></li>
+                    <li><a href="#"><span class="icon fa fa-group"></span> Team</a></li>
+                    <li><a href="#"><span class="icon fa fa-envelope"></span> Contact</a></li>
                   </ul>
                 </div><!--/.nav-collapse -->
               </div><!--/.container -->
@@ -54,22 +54,58 @@
 
         <main role="main">
 
-            <img src="img/okwu.jpg" alt="OKWU.edu Homepage">
-            <img src="img/okwu-athletics.jpg" alt="OKWU Athletics Homepage">
-            <img src="img/bartlesvillecf.jpg" alt="Bartlesville Community Foundation">
-            <img src="img/emancipation.jpg" alt="Emancipation Stories">
+            <div id="homepage-feature" class="carousel slide">
+                <ol class="carousel-indicators">
+                    <li data-target="#homepage-feature" data-slide-to="0" class="active"></li>
+                    <li data-target="#homepage-feature" data-slide-to="1"></li>
+                    <li data-target="#homepage-feature" data-slide-to="2"></li>
+                    <li data-target="#homepage-feature" data-slide-to="3"></li>
+                </ol>
 
-            <h2>Welcome!</h2>
-            <p>Suspendisse et arcu felis, ac gravida turpis. Suspendisse potenti. Ut porta rhoncus ligula, sed fringilla felis feugiat eget. In non purus quis elit iaculis tincidunt. Donec at ultrices est.</p>
-            <p><a href="#">See our portfolio</a></p>
+                <!-- Wrapper for slides -->
+                <div class="carousel-inner">
+                    <div class="item active">
+                        <img src="img/okwu.jpg" alt="OKWU.edu Homepage">
+                    </div>
+                    <div class="item">
+                        <img src="img/okwu-athletics.jpg" alt="OKWU Athletics Homepage">
+                    </div>
+                    <div class="item">
+                        <img src="img/bartlesvillecf.jpg" alt="Bartlesville Community Foundation">
+                    </div>
+                    <div class="item">
+                        <img src="img/emancipation.jpg" alt="Emancipation Stories">
+                    </div>
+                </div><!-- /.carousel-inner -->
 
-            <h2>Recent Updates</h2>
-            <p>Suspendisse et arcu felis, ac gravida turpis. Suspendisse potenti. Ut porta rhoncus ligula, sed fringilla felis feugiat eget. In non purus quis elit iaculis tincidunt. Donec at ultrices est.</p>
-            <p><a href="#">See what's new!</a></p>
+                <!-- Controls -->
+                <a class="left carousel-control" href="#homepage-feature" data-slide="prev">
+                    <span class="icon fa fa-chevron-left"></span>
+                </a>
+                <a class="right carousel-control" href="#homepage-feature" data-slide="next">
+                    <span class="icon fa fa-chevron-right"></span>
+                </a>
+            </div><!-- /#homepage-feature.carousel -->
 
-            <h2>Our Team</h2>
-            <p>Suspendisse et arcu felis, ac gravida turpis. Suspendisse potenti. Ut porta rhoncus ligula, sed fringilla felis feugiat eget. In non purus quis elit iaculis tincidunt. Donec at ultrices est.</p>
-            <p><a href="#">Meet the team!</a></p>
+            <div class="page-contents container">
+            <div class="row">
+                <div class="col-sm-4">
+                    <h2>Welcome!</h2>
+                    <p>Suspendisse et arcu felis, ac gravida turpis. Suspendisse potenti. Ut porta rhoncus ligula, sed fringilla felis feugiat eget. In non purus quis elit iaculis tincidunt. Donec at ultrices est.</p>
+                    <p><a class="btn btn-primary pull-right" href="#">See our portfolio <span class="icon fa fa-arrow-circle-right"></span></a></p>
+                </div>
+                <div class="col-sm-4">
+                    <h2>Recent Updates</h2>
+                    <p>Suspendisse et arcu felis, ac gravida turpis. Suspendisse potenti. Ut porta rhoncus ligula, sed fringilla felis feugiat eget. In non purus quis elit iaculis tincidunt. Donec at ultrices est.</p>
+                    <p><a class="btn btn-primary pull-right" href="#">See what's new! <span class="icon fa fa-arrow-circle-right"></span></a></p>
+                </div>
+                <div class="col-sm-4">
+                    <h2>Our Team</h2>
+                    <p>Suspendisse et arcu felis, ac gravida turpis. Suspendisse potenti. Ut porta rhoncus ligula, sed fringilla felis feugiat eget. In non purus quis elit iaculis tincidunt. Donec at ultrices est.</p>
+                    <p><a class="btn btn-primary pull-right" href="#">Meet the team! <span class="icon fa fa-arrow-circle-right"></span></a></p>
+                </div>
+            </div><!-- /.row -->
+            </div><!-- /.container -->
 
         </main>
 
@@ -87,18 +123,10 @@
 
         </footer>
 
-        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+        <script src="js/vendor/jquery-1.10.2.min.js"></script>
         <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.10.2.min.js"><\/script>')</script>
         <script src="js/plugins.js"></script>
         <script src="js/main.js"></script>
-
-        <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
-        <script>
-            var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview']];
-            (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
-            g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
-            s.parentNode.insertBefore(g,s)}(document,'script'));
-        </script>
 
     </body>
 </html>
