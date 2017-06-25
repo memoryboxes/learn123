@@ -7,7 +7,7 @@ import logging
 
 logging.basicConfig(level=logging.DEBUG,
                 format='%(asctime)s %(filename)s[line:%(lineno)d] %(levelname)s %(message)s',
-                datefmt='%a, %d %b %Y %H:%M:%S')
+                datefmt='%Y-%m-%d %H:%M:%S')
 
 def long_time_task(name):
     logging.info('Run task %s (%s)...' % (name, os.getpid()))
