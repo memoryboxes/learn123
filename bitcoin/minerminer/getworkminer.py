@@ -75,7 +75,8 @@ class BitcoinRPC:
     def getblockcount(self):
         return self.rpc('getblockcount')
     def getwork(self, data=None):
-        return self.rpc('getwork', data)
+        rpcdata = self.rpc('getwork', data)
+        return rpcdata
 
 def uint32(x):
     return x & 0xffffffffL
