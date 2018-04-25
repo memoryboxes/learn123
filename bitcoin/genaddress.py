@@ -2,6 +2,7 @@
 
 import codecs
 import hashlib
+import mpmath as mp
 import os
 import sys
 from pycoin import ecdsa, encoding
@@ -16,17 +17,34 @@ def gen_address(private_key):
     print("hash160: {}".format(hash160.hex()))
     print("Bitcoin address: {}".format(encoding.hash160_sec_to_bitcoin_address(hash160)))
 
+
 def decode(addr):
+    mp.dps = 1000
     b58 = '123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz'
-    decoded = ''
-    for i in addr:
-        temp = hex(b58.index(i))
-        if len(temp) == 3:
-            temp = '0' + temp[-1]
-        else:
-            temp = temp[2:]
-        decoded += (temp)
-    return (decoded)
+
+    def base58_to_dec(addr):
+        dec = 0
+        for i in range(len(addr)):
+            dec = int(dec * 58 + b58.index(addr[i]))
+        return(dec)
+
+    def dec_to_byte(dec):
+        out = ''
+        while dec != 0:
+            remn = mp.mpf(dec % 256)
+            dec = mp.mpf((dec - remn) / 256)
+            temp = hex(int(remn))
+            if len(temp) == 3:
+                temp = '0' + temp[-1]
+            else:
+                temp = temp[2:]
+            out = temp + out
+
+        return (out)
+
+    dec = base58_to_dec(addr)
+    out = dec_to_byte(dec)
+    return (out)
 
 if __name__ == '__main__':
     key = sys.argv[1]
