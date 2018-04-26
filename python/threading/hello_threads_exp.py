@@ -22,7 +22,7 @@ class FuncThreadClass(threading.Thread):
         self.args = args
 
     def run(self):
-        apply(self.func, self.args)
+        self.func(*self.args)
         time.sleep(1)
 
 if __name__ == '__main__':
