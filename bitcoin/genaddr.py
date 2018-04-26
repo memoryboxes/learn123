@@ -3,8 +3,9 @@
 """doctopt msg send tools
 
 Usage:
-  genaddr.py encode  <private>
-  genaddr.py decode  <addr>
+  genaddr.py p2addr     <private>
+  genaddr.py addr2160   <addr>
+  genaddr.py 1602addr   <160>
 
 Options:
   -h --help                                             Show this screen.
@@ -12,9 +13,9 @@ Options:
 
 Example:
 
-    genaddr.py encode 6bd3b27c591                           # gen address from private 0x6bd3b27c591->1PiFuqGpG8yGM5v6rNHWS3TjsG6awgEGA1
-    genaddr.py decode 1PiFuqGpG8yGM5v6rNHWS3TjsG6awgEGA1    # gen hash160 from address PiFuqGpG8yGM5v6rNHWS3TjsG6awgEGA1->f92044c7924e58000000000000000000000000000000001e
-
+    genaddr.py p2addr 6bd3b27c591                                         # gen address from private 0x6bd3b27c591->1PiFuqGpG8yGM5v6rNHWS3TjsG6awgEGA1
+    genaddr.py addr2160 1PiFuqGpG8yGM5v6rNHWS3TjsG6awgEGA1                # gen hash160 from address PiFuqGpG8yGM5v6rNHWS3TjsG6awgEGA1->f92044c7924e58000000000000000000000000000000001e
+    genaddr.py 1602addr f92044c7924e58000000000000000000000000000000001e  # gen address from hash160 f92044c7924e58000000000000000000000000000000001e->PiFuqGpG8yGM5v6rNHWS3TjsG6awgEGA1
 """
 
 import codecs
@@ -35,6 +36,8 @@ def gen_address(private_key):
     print("hash160: {}".format(hash160.hex()))
     print("Bitcoin address: {}".format(encoding.hash160_sec_to_bitcoin_address(hash160)))
 
+def gen_address_from_160(hash160):
+    print("Bitcoin address: {}".format(encoding.hash160_sec_to_bitcoin_address(bytes.fromhex(hash160))))
 
 def decode(addr):
     mp.dps = 1000
@@ -67,13 +70,17 @@ def decode(addr):
 if __name__ == '__main__':
     arguments = docopt(__doc__, version='Pmsg 2.0')
 
-    if arguments['encode']:
+    if arguments['p2addr']:
         key = arguments['<private>']
         if len(key) < 32:
             key = '0' * (32 - len(key)) + key
         print('private:',key)
         gen_address(key)
-    elif arguments['decode']:
+    elif arguments['addr2160']:
         key = arguments['<addr>']
         print('address:', key)
         print(decode(key))
+    elif arguments['1602addr']:
+        key = arguments['<160>']
+        print('hash160:', key)
+        gen_address_from_160(key)
