@@ -6,6 +6,7 @@ Usage:
   genaddr.py p2addr     <private>
   genaddr.py addr2160   <addr>
   genaddr.py 1602addr   <160>
+  genaddr.py addrfile2160 <fileaddr>
 
 Options:
   -h --help                                             Show this screen.
@@ -42,7 +43,7 @@ def gen_address(private_key):
     print("Bitcoin address: {}".format(encoding.hash160_sec_to_bitcoin_address(hash160, address_prefix=b'\0')))
 
 def gen_address_from_160(hash160):
-    print("Bitcoin address: {}".format(encoding.hash160_sec_to_bitcoin_address(bytes.fromhex(hash160))))
+    return encoding.hash160_sec_to_bitcoin_address(bytes.fromhex(hash160))
 
 def decode(addr):
     mp.dps = 1000
@@ -88,4 +89,9 @@ if __name__ == '__main__':
     elif arguments['1602addr']:
         key = arguments['<160>']
         print('hash160:', key)
-        gen_address_from_160(key)
+        print("Bitcoin address:{}".format(gen_address_from_160(key)))
+    elif arguments['addrfile2160']:
+        fileaddr = arguments['<fileaddr>']
+        with open(fileaddr, 'r') as fp:
+            for line in fp:
+                print(decode(line))
