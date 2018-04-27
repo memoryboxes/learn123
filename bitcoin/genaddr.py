@@ -16,6 +16,11 @@ Example:
     genaddr.py p2addr 6bd3b27c591                                         # gen address from private 0x6bd3b27c591->1PiFuqGpG8yGM5v6rNHWS3TjsG6awgEGA1
     genaddr.py addr2160 1PiFuqGpG8yGM5v6rNHWS3TjsG6awgEGA1                # gen hash160 from address PiFuqGpG8yGM5v6rNHWS3TjsG6awgEGA1->f92044c7924e58000000000000000000000000000000001e
     genaddr.py 1602addr f92044c7924e58000000000000000000000000000000001e  # gen address from hash160 f92044c7924e58000000000000000000000000000000001e->PiFuqGpG8yGM5v6rNHWS3TjsG6awgEGA1
+
+
+    echo -n 'Money is the root of all evil.'|sha256sum => get private key is "d1bb6f97f53377cadd8d3230f8f542a91d0055b87ec7e69c53c7b48dc51e8cfb"
+    genaddr.py p2addr d1bb6f97f53377cadd8d3230f8f542a91d0055b87ec7e69c53c7b48dc51e8cfb"
+    genaddr.py 1602addr 8b0a993126c3bf8f4b28c8264b553d6aa39f2956          # gen address from hash160 8b0a993126c3bf8f4b28c8264b553d6aa39f2956>1DgBd4AgrBrzk4JnxVFH8hJmx9a3Jownqh
 """
 
 import codecs
@@ -34,7 +39,7 @@ def gen_address(private_key):
     print('public pair:', public_pair)
     hash160 = encoding.public_pair_to_hash160_sec(public_pair, compressed=True)
     print("hash160: {}".format(hash160.hex()))
-    print("Bitcoin address: {}".format(encoding.hash160_sec_to_bitcoin_address(hash160)))
+    print("Bitcoin address: {}".format(encoding.hash160_sec_to_bitcoin_address(hash160, address_prefix=b'\0')))
 
 def gen_address_from_160(hash160):
     print("Bitcoin address: {}".format(encoding.hash160_sec_to_bitcoin_address(bytes.fromhex(hash160))))
