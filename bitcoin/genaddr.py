@@ -19,22 +19,18 @@ Example:
     genaddr.py 1602addr f92044c7924e58000000000000000000000000000000001e  # gen address from hash160 f92044c7924e58000000000000000000000000000000001e->PiFuqGpG8yGM5v6rNHWS3TjsG6awgEGA1
 
 
-    echo -n 'Money is the root of all evil.'|sha256sum => get private key is "d1bb6f97f53377cadd8d3230f8f542a91d0055b87ec7e69c53c7b48dc51e8cfb"
-    genaddr.py p2addr d1bb6f97f53377cadd8d3230f8f542a91d0055b87ec7e69c53c7b48dc51e8cfb"
+    echo -n 'Money is the root of all evil'|sha256sum => get private key is 8b39f21f1f93a94133e82cb64d0532d9d57bb5ac44057ea0c8c19d9c319fc92c
+    genaddr.py p2addr 8b39f21f1f93a94133e82cb64d0532d9d57bb5ac44057ea0c8c19d9c319fc92c
     genaddr.py 1602addr 8b0a993126c3bf8f4b28c8264b553d6aa39f2956          # gen address from hash160 8b0a993126c3bf8f4b28c8264b553d6aa39f2956>1DgBd4AgrBrzk4JnxVFH8hJmx9a3Jownqh
 """
 
-import codecs
-import hashlib
-import mpmath as mp
-import os
-import sys
 from pycoin import ecdsa, encoding
 from docopt import docopt
 
+
 def gen_address(private_key):
-    #private_key = codecs.encode(os.urandom(32), 'hex').decode()
-    secret_exponent= int('0x'+private_key, 0)
+    # private_key = codecs.encode(os.urandom(32), 'hex').decode()
+    secret_exponent= int('0x' + private_key, 0)
     print('WIF: ' + encoding.secret_exponent_to_wif(secret_exponent, compressed=False))
     public_pair = ecdsa.public_pair_for_secret_exponent(ecdsa.secp256k1.generator_secp256k1, secret_exponent)
     print('public pair:', public_pair)
@@ -42,36 +38,14 @@ def gen_address(private_key):
     print("hash160: {}".format(hash160.hex()))
     print("Bitcoin address: {}".format(encoding.hash160_sec_to_bitcoin_address(hash160, address_prefix=b'\0')))
 
+
 def gen_address_from_160(hash160):
     return encoding.hash160_sec_to_bitcoin_address(bytes.fromhex(hash160))
 
+
 def decode(addr):
-    mp.dps = 1000
-    b58 = '123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz'
+    return encoding.bitcoin_address_to_hash160_sec(addr).hex()
 
-    def base58_to_dec(addr):
-        dec = 0
-        for i in range(len(addr)):
-            dec = int(dec * 58 + b58.index(addr[i]))
-        return(dec)
-
-    def dec_to_byte(dec):
-        out = ''
-        while dec != 0:
-            remn = mp.mpf(dec % 256)
-            dec = mp.mpf((dec - remn) / 256)
-            temp = hex(int(remn))
-            if len(temp) == 3:
-                temp = '0' + temp[-1]
-            else:
-                temp = temp[2:]
-            out = temp + out
-
-        return (out)
-
-    dec = base58_to_dec(addr)
-    out = dec_to_byte(dec)
-    return (out)
 
 if __name__ == '__main__':
     arguments = docopt(__doc__, version='Pmsg 2.0')
@@ -80,7 +54,7 @@ if __name__ == '__main__':
         key = arguments['<private>']
         if len(key) < 32:
             key = '0' * (32 - len(key)) + key
-        print('private:',key)
+        print('private:', key)
         gen_address(key)
     elif arguments['addr2160']:
         key = arguments['<addr>']
