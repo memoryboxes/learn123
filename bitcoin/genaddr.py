@@ -19,8 +19,7 @@ Example:
     genaddr.py 1602addr f92044c7924e58000000000000000000000000000000001e  # gen address from hash160 f92044c7924e58000000000000000000000000000000001e->PiFuqGpG8yGM5v6rNHWS3TjsG6awgEGA1
 
 
-    echo -n 'Money is the root of all evil'|sha256sum => get private key is 8b39f21f1f93a94133e82cb64d0532d9d57bb5ac44057ea0c8c19d9c319fc92c
-    genaddr.py p2addr 8b39f21f1f93a94133e82cb64d0532d9d57bb5ac44057ea0c8c19d9c319fc92c
+    echo -n 'Money is the root of all evil.'|sha256sum => get private key is d1bb6f97f53377cadd8d3230f8f542a91d0055b87ec7e69c53c7b48dc51e8cfb => hash160:d1bb6f97f53377cadd8d3230f8f542a91d0055b87ec7e69c53c7b48dc51e8cfb
     genaddr.py 1602addr 8b0a993126c3bf8f4b28c8264b553d6aa39f2956          # gen address from hash160 8b0a993126c3bf8f4b28c8264b553d6aa39f2956>1DgBd4AgrBrzk4JnxVFH8hJmx9a3Jownqh
 """
 
