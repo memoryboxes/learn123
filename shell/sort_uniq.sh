@@ -11,7 +11,7 @@ do
 {
   sort -uo sort_$file $file
   rm -rf $file
-} &
+}
 done
 wait
 
