@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
 import logging
+import logging.handlers
 import sys
 
 
@@ -44,12 +45,28 @@ class MiniLogger(object):
     def file_logger(self, file=None):
         if file is None:
             file = self._name + '.log'
-        ch2 = logging.FileHandler(file)
-        ch2.setLevel(self._level)
+        ch = logging.FileHandler(file)
+        ch.setLevel(self._level)
 
         formatter = logging.Formatter(self._level_format)
-        ch2.setFormatter(formatter)
-        self._logger.addHandler(ch2)
+        ch.setFormatter(formatter)
+        self._logger.addHandler(ch)
+
+        return self._logger
+
+    def rotating_file_logger(self, file=None,
+                             max_bytes=1024 * 1024 * 1024,
+                             backup_count=10):
+        if file is None:
+            file = self._name + '.log'
+        ch = logging.handlers.RotatingFileHandler(file,
+                                                  maxBytes=max_bytes,
+                                                  backupCount=backup_count)
+        ch.setLevel(self._level)
+
+        formatter = logging.Formatter(self._level_format)
+        ch.setFormatter(formatter)
+        self._logger.addHandler(ch)
 
         return self._logger
 
@@ -72,5 +89,9 @@ if __name__ == '__main__':
     logger = MiniLogger(level_format='%(message)s').stream_logger()
     test_logger(logger)
 
-    logger = MiniLogger(level_format='%(message)s').file_logger('process.log')
+    logger = MiniLogger(level_format='%(message)s').file_logger('minilogger.log')
     test_logger(logger)
+
+    logger = MiniLogger(level_format='%(message)s').rotating_file_logger(max_bytes=1024 * 1024)
+    for i in range(10000):
+        test_logger(logger)
