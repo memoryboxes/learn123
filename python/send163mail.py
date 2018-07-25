@@ -13,7 +13,7 @@ sender = 'dingdingyue@163.com'  # 发件人邮箱(最好写全, 不然会失败)
 receivers = ['test@outlook.com']  # 接收邮件，可设置为你的QQ邮箱或者其他邮箱
 
 
-content = '过期教程害死人!'
+content = 'test for send mail (163.com)!'
 title = 'Python SMTP Mail Test'  # 邮件主题
 message = MIMEText(content, 'plain', 'utf-8')  # 内容, 格式, 编码
 message['From'] = "{}".format(sender)
