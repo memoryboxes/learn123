@@ -2,7 +2,15 @@
 
 import logging
 import logging.handlers
+import os
 import sys
+
+
+class MPFileLogHandler(logging.Handler):
+    """process safe to output single log file"""
+    def __init__(self, file_path):
+        self._fd = os.open(file_path, os.O_WRONLY | os.O_CREAT | os.O_APPEND)
+        logging.Handler.__init__(self)
 
 
 class MiniLogger(object):
@@ -53,6 +61,23 @@ class MiniLogger(object):
         self._logger.addHandler(ch)
 
         return self._logger
+
+    def process_safe_logger(self, file=None):
+        if file is None:
+            file = self._name + '.log'
+
+        ch = MPFileLogHandler(file)
+        ch.setLevel(self._level)
+        formatter = logging.Formatter(self._level_format)
+        ch.setFormatter(formatter)
+
+        self._log.addHandler(ch)
+
+        return self._logger
+
+    def emit(self, record):
+        msg = "{}\n".format(self.format(record))
+        os.write(self._fd, msg.encode('utf-8'))
 
     def rotating_file_logger(self, file=None,
                              max_bytes=1024 * 1024 * 1024,
