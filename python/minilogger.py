@@ -12,6 +12,10 @@ class MPFileLogHandler(logging.Handler):
         self._fd = os.open(file_path, os.O_WRONLY | os.O_CREAT | os.O_APPEND)
         logging.Handler.__init__(self)
 
+    def emit(self, record):
+        msg = "{}\n".format(self.format(record))
+        os.write(self._fd, msg.encode('utf-8'))
+
 
 class MiniLogger(object):
     LEVEL_FULL_FORMAT = '%(asctime)s %(filename)s[line:%(lineno)d] %(levelname)s %(message)s'
